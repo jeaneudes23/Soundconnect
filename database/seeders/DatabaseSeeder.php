@@ -18,11 +18,9 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-       $hipHopSongs = ['audios/hhs1.mp3','audios/hhs2.mp3','audios/hhs3.mp3'];
-       $afroSongs = ['audios/afs1.mp3','audios/afs2.mp3','audios/afs3.mp3'];
-       $rnbSongs = ['audios/rbs1.mp3','audios/rbs2.mp3','audios/rbs3.mp3'];
-       $rnbInstrumentals = ['audios/rbi1.mp3','audios/rbi2.mp3','audios/rbi3.mp3'];
-       $hipHopInstrumentals = ['audios/hhi1.mp3','audios/hhi2.mp3','audios/hhi3.mp3'];
+       $afroSongs = ['audios/ab.mp3'];
+       $rnbInstrumentals = ['audios/rb.mp3'];
+       $hipHopInstrumentals = ['audios/hh1.mp3','audios/hh2.mp3','audios/hh3.mp3'];
 
        $hipHopOwner = User::create([
         'name' => fake()->name,
@@ -145,16 +143,7 @@ class DatabaseSeeder extends Seeder
                 'password' => '12345678',
                 
             ]);
-            Post::create([
-                'user_id' => $user->id,
-                'community_id' => $hipHopCommunity->id,
-                'caption' => fake()->sentence,
-                'audio_file' => fake()->randomElement($hipHopSongs),
-                'tags' => 'hip hop,music,808s,bass',
-                'bpm' => fake()->numberBetween(50,170),
-                'genre' => 'hip hop',
-                'type' => 'song',
-            ]);
+
             Post::create([
                 'user_id' => $user->id,
                 'community_id' => $hipHopCommunity->id,
@@ -166,16 +155,6 @@ class DatabaseSeeder extends Seeder
                 'type' => 'instrumental',
             ]);
 
-            Post::create([
-                'user_id' => $user->id,
-                'community_id' => $rnbCommunity->id,
-                'caption' => fake()->sentence,
-                'audio_file' => fake()->randomElement($rnbSongs),
-                'tags' => 'rnb,music,slow,bass',
-                'bpm' => fake()->numberBetween(50,170),
-                'genre' => 'RNB',
-                'type' => 'song',
-            ]);
             Post::create([
                 'user_id' => $user->id,
                 'community_id' => $rnbCommunity->id,

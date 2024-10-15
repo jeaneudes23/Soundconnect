@@ -9,7 +9,7 @@ export default {
         extend: {
             colors: {
                 danger: colors.rose,
-                primary: { ...colors.teal, DEFAULT: colors.teal[600] },
+                primary: { ...colors.green, DEFAULT: colors.green[600] },
                 bg: colors.white,
                 success: colors.green,
                 warning: colors.yellow,

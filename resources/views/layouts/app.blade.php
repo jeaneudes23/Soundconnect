@@ -39,7 +39,7 @@
 
         </footer>
         @livewire('notifications')
-        <script type="text/javascript" src="{{ asset('js/player.js') }}"></script>
+        <script async type="text/javascript" src="{{ asset('storage/js/player.js') }}"></script>
         <script>
             if (document.querySelector('#message'))
             {
