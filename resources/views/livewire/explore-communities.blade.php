@@ -7,16 +7,6 @@
                     <x-text-input placeholder="Search by name,handle name, tags" class="placeholder:text-sm w-full" type="text" wire:model.debounce.350ms="search"/>
                     <x-livewire-primary-button>Search</x-livewire-primary-button>
                 </div>
-                <div class="my-4">
-                    <ul class="flex flex-wrap gap-2 my-4">
-                    @forelse ($tags as $tag)
-                    @if ($tag !== '')
-                        <li><button class="bg-primary p-1 rounded text-xs text-gray-100 capitalize">{{ $tag->text }}</button></li>
-                    @endif
-                    @empty
-                    @endforelse
-                    </ul>
-                </div>
 
             </div>
             <div>

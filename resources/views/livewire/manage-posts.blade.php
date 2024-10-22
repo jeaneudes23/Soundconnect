@@ -94,7 +94,7 @@
             <div class="space-y-6">
                 @forelse ($posts as $post)
                 <div >
-                    <livewire:post.show-post :post="$post" :wire:key="$post->id"/>
+                    <x-post-card :post="$post" wire:key="{{ $post->id }}" />
                     <x-primary-button wire:click="unlink({{$post->id}})" class="bg-red-600 text-xs mt-1">Remove</x-primary-button>
                 </div>
                 @empty

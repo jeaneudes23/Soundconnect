@@ -31,8 +31,7 @@ class ExplorePosts extends Component
         ->orderBy($this->sortBy, $this->orderBy)
         ->take($this->count)
         ->get();
-        $tags = Tag::where('type','post')->get()->unique('text');
-        return view('livewire.explore-posts', compact('posts','tags'));
+        return view('livewire.explore-posts', compact('posts'));
     }
     public function showMore()
     {

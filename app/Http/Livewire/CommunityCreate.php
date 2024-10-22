@@ -72,10 +72,6 @@ class CommunityCreate extends Component implements HasForms
                         TagsInput::make('tags')
                             ->separator(',')
                             ->label('tags')
-                            ->suggestions([
-                                'Hip Hop',
-                                'Afro',
-                            ]),
                     ]),
                 Step::make("Profile & Cover Images")
                     ->schema([
@@ -101,12 +97,7 @@ class CommunityCreate extends Component implements HasForms
     {
 
         Community::create($this->form->getState());
-        foreach ($this->tags as $tag) {
-            Tag::create([
-                'type' => 'community',
-                'text' => $tag
-            ]);
-        };
+
         return redirect()->route('community.show', ['handle_name' => $this->handle_name]);
     }
 

@@ -1,5 +1,5 @@
-<x-slot name="title">Home</x-slot>
 <div>
+  <x-slot name="title">Home</x-slot>
   <x-split-screen>
     <x-split-screen-left>
       <div x-data="{open : false}" id="filters" class="rounded border border-gray-100 p-4 shadow-sm">
@@ -53,7 +53,7 @@
 
       <div class="mt-6 space-y-6">
         @forelse ($posts as $post)
-        <livewire:post.show-post :post="$post" :wire:key="$post->id" />
+        <x-post-card :post="$post" wire:key="{{$post->id}}"/>
         @empty
         <div>
           No Posts Found <br />
@@ -76,33 +76,34 @@
       </div>
     </x-split-screen-right>
   </x-split-screen>
-</div>
-<script>
-  const notice = document.createElement('div')
-  notice.innerHTML =`
-  <div id="notice" class="bg-gray-100 px-4 py-2 mb-6  text-sm text-gray-500">
-        <div class="flex mb-2  justify-between items-center">
-          <div class="text-primary mb-1 text-center font-bold">Notice</div>
-          <button id="closeNotice">
-            <div class="sr-only">Close notice</div>
-            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-          </path>
-          </svg>
-          </button>
+  <script>
+    const notice = document.createElement('div')
+    notice.innerHTML =`
+    <div id="notice" class="bg-gray-100 px-4 py-2 mb-6  text-sm text-gray-500">
+          <div class="flex mb-2  justify-between items-center">
+            <div class="text-primary mb-1 text-center font-bold">Notice</div>
+            <button id="closeNotice">
+              <div class="sr-only">Close notice</div>
+              <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </path>
+            </svg>
+            </button>
+          </div>
+          <h3 ></h3>
+          <p><span class="font-semibold">Free posts</span> are available for free download, use, and distribution.</p>
+          <p><span class="font-semibold">Premium posts</span> require approval from the creator for distribution, even after download and use.</p>
         </div>
-        <h3 ></h3>
-        <p><span class="font-semibold">Free posts</span> are available for free download, use, and distribution.</p>
-        <p><span class="font-semibold">Premium posts</span> require approval from the creator for distribution, even after download and use.</p>
-      </div>
-  `
-  if (localStorage.getItem('showNotice') !== 'false')
-  {
-      document.querySelector('#filters').before(notice)
-      document.querySelector('#closeNotice').addEventListener('click', ()=>{
-          document.querySelector('#notice').remove()
-          localStorage.setItem('showNotice', 'false')
-      })
-  }
-</script>
+    `
+    if (localStorage.getItem('showNotice') !== 'false')
+    {
+        document.querySelector('#filters').before(notice)
+        document.querySelector('#closeNotice').addEventListener('click', ()=>{
+            document.querySelector('#notice').remove()
+            localStorage.setItem('showNotice', 'false')
+        })
+    }
+  </script>
+</div>
+

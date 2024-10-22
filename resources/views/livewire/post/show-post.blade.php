@@ -1,5 +1,5 @@
 <div>
-  <div data-player="false" data-play-status="false" class="group/play rounded border bg-gray-100 border-gray-100 px-4 py-2 text-sm shadow">
+  <div wire:key="{{$post->id.' player'}}" data-player="false" data-play-status="false" class="group/play rounded border bg-gray-100 border-gray-100 px-4 py-2 text-sm shadow">
     <div class="flex gap-2 justify-between">
       <div class="flex flex-wrap items-center">
         @if ($post->community_id)
@@ -90,7 +90,7 @@
         </ul>
         <div data-duration>
         </div>
-        <a target="_blank" class="ml-auto rounded-lg font-semibold bg-primary px-2 py-2 text-white" href="{{ asset($post->audio_file) }}">{{'Download-'.$post->license}}</a>
+        <a target="_blank" class="ml-auto rounded-lg font-semibold bg-primary px-2 py-2 text-white" download="" href="{{ asset('storage/'.$post->audio_file) }}">{{'Download-'.$post->license}}</a>
       </div>
 
     @endif
@@ -108,13 +108,13 @@
           {{$post->comments->count().' Comments'}} 
         </a>
       </div>
-      <div class="relative group flex ml-auto items-center gap-2">
+      <div class="relative group/post flex ml-auto items-center gap-2">
         <button class="font-bold inline-flex flex-col">
           <span>
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.0001 9.32C13.1901 9.32 14.1601 8.35 14.1601 7.16C14.1601 5.97 13.1901 5 12.0001 5C10.8101 5 9.84009 5.97 9.84009 7.16C9.84009 8.35 10.8101 9.32 12.0001 9.32Z" class="stroke-primary" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6.78988 18.9999C7.97988 18.9999 8.94988 18.0299 8.94988 16.8399C8.94988 15.6499 7.97988 14.6799 6.78988 14.6799C5.59988 14.6799 4.62988 15.6499 4.62988 16.8399C4.62988 18.0299 5.58988 18.9999 6.78988 18.9999Z" class="stroke-primary" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17.21 18.9999C18.4 18.9999 19.37 18.0299 19.37 16.8399C19.37 15.6499 18.4 14.6799 17.21 14.6799C16.02 14.6799 15.05 15.6499 15.05 16.8399C15.05 18.0299 16.02 18.9999 17.21 18.9999Z" class="stroke-primary" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
           </span>
         </button>
-        <div class="bg-white p-2 rounded-sm shadow absolute right-0 top-8 hidden group-focus-within:block">
+        <div class="bg-white p-2 rounded-sm shadow absolute right-0 top-8 hidden group-focus-within/post:block">
         @can('update', $post)
         <a class="w-full whitespace-pre block px-4 py-2 hover:bg-gray-100" href="{{route('post.edit', ['post_id' => $post->id])}}">Edit Post</a>
         @endcan

@@ -22,7 +22,7 @@ const handlePlay = (source)=>{
     document.querySelectorAll('[data-player=true]').forEach(item => {
       item.setAttribute('data-play-status','false')
       item.setAttribute('data-player', 'false')
-      item.querySelector('[data-progress-container]').style.width = `0%`
+      item.querySelector('[data-progress-bar]').style.width = `0%`
       item.querySelector('[data-progress-container]').setAttribute('disabled','true')
     })
     player.setAttribute('data-player', 'true')

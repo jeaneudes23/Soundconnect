@@ -53,12 +53,7 @@ class EditProfile extends Component implements HasForms
     public function submit()
     {
         auth()->user()->profile()->update($this->form->getState());
-        foreach($this->tags as $tag){
-            Tag::create([
-                'type' => 'user',
-                'text' => $tag
-            ]);
-        };
+
         return redirect()->route('profile.show', ['username' => auth()->user()->username])->with('message','Changes Saved');
     }
 }

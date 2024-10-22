@@ -2,7 +2,7 @@
 <x-split-screen>
     <x-split-screen-left>
         <div>
-            <livewire:post.show-post :post="$post" :wire:key="$post->id"/>
+            <x-post-card :post="$post" wire:key="{{ $post->id }}" />
             <div>
                 <form class="my-6 " wire:submit.prevent="submit">
                     {{ $this->form }}

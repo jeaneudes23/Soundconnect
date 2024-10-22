@@ -13,8 +13,7 @@ class ExploreUsers extends Component
     public function render()
     {
         $users = User::withCount('posts')->orderByDesc('posts_count')->search(trim($this->search))->get();
-        $tags = Tag::where('type','user')->get()->unique('text');
-        return view('livewire.explore-users', compact('users','tags'));
+        return view('livewire.explore-users', compact('users'));
     }
     
     public function changequery($text)

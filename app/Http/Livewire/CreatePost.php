@@ -178,14 +178,7 @@ class CreatePost extends Component implements HasForms
                         ->required(),
                     TagsInput::make('tags')
                         ->separator(',')
-                        ->label('Tags')
-                        ->suggestions([
-                            'hip hop',
-                            'afro',
-                            'rng',
-                            'Accappella',
-                        ]),
-
+                        ->label('Tags'),
                     Select::make('license')
                         ->options([
                             'free' => 'Free',
@@ -213,13 +206,6 @@ class CreatePost extends Component implements HasForms
     public function submit()
     {
         Post::create($this->form->getState());
-
-        foreach ($this->tags as $tag) {
-            Tag::create([
-                'type' => 'post',
-                'text' => $tag
-            ]);
-        };
         return redirect()->route('home')->with('message', 'Post created ');
     }
     public function render()
