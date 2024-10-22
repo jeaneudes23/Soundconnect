@@ -18,7 +18,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessFilament(): bool
     {   
-        return $this->email == "admin@test.com";
+        return $this->role == "admin";
     }
     public function scopeSearch($query, $term)
     {
@@ -111,16 +111,13 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(Message::class, 'receiver_id');
     }
-    public function newMessageNotifications()
+    public function notifications()
     {
-        return $this->hasMany(NewMessageNotification::class, 'user_to');
+        return $this->hasMany(Notification::class, 'user_to');
     }
-    public function newNotifications()
+    public function unreadNotifications()
     {
-        return $this->hasMany(NewNotification::class, 'user_to');
+        return $this->notifications()->whereNull('read_at');
     }
-    public function oldNotifications()
-    {
-        return $this->hasMany(OldNotification::class , 'user_to');
-    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Livewire\Component;
 use App\Models\NewNotification;
+use App\Models\Notification;
 use App\Models\OldNotification;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,12 +84,7 @@ class ProfileShow extends Component
         auth()->user()->following()->toggle($this->profile);
         if(auth()->user()->following->contains($this->profile))
         {
-            NewNotification::create([
-                'user_from' => auth()->user()->id,
-                'user_to' =>$this->user->id,
-                'action' => 'follow'
-            ]);
-            OldNotification::create([
+            Notification::create([
                 'user_from' => auth()->user()->id,
                 'user_to' =>$this->user->id,
                 'action' => 'follow'

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Community;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -198,5 +199,12 @@ class DatabaseSeeder extends Seeder
        
         }
  
+
+        User::create([
+          'name' => 'Admin',
+          'email' => 'admin@test.com',
+          'password' => Hash::make('password'),
+          'role' => 'admin',
+        ]);
     }
 }

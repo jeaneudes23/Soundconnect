@@ -11,12 +11,14 @@ class Notifications extends Component
     
     public function render()
     {
-        foreach(auth()->user()->newNotifications as $newNotification)
+        foreach(auth()->user()->unreadNotifications()->where('action','!=','message')->get() as $notification)
         {
-            $newNotification->delete();
+            $notification->update([
+              'read_at' => now()
+            ]);
         }
        
-        $notifications = auth()->user()->oldNotifications()->get()->sortByDesc('created_at');
+        $notifications = auth()->user()->notifications()->where('action','!=','message')->get()->sortByDesc('created_at');
         return view('livewire.notifications', compact('notifications'));
     }
 }

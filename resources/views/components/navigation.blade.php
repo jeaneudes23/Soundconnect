@@ -29,13 +29,13 @@
 
         <ul class="flex items-center justify-between gap-2">
           <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('explore')}}">Explore</a></li>
-          @if (auth()->user()->newMessageNotifications()->count()>0)
-            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages <span class="font-seminold">({{auth()->user()->newMessageNotifications()->count()}})</span></a></li>
+          @if (auth()->user()->unreadNotifications()->where('action','message')->count()>0)
+            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages <span class="font-seminold">({{auth()->user()->unreadNotifications()->where('action','message')->count()}})</span></a></li>
           @else
             <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages</a></li>
           @endif
-          @if (auth()->user()->newNotifications()->count()>0)
-            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications <span class="font-semibold">({{auth()->user()->newNotifications()->count()}})</span></a></li>
+          @if (auth()->user()->unreadNotifications()->where('action','!=','message')->count()>0)
+            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications <span class="font-semibold">({{auth()->user()->unreadNotifications()->where('action','!=','message')->count()}})</span></a></li>
           @else
             <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications</a></li>
           @endif
@@ -100,13 +100,13 @@
 
         <ul x-show="open" class="pt-4 divide-y flex flex-col">
           <li><a class="border-t hover:text-primary block px-4 py-2 transition-all" href="{{route('explore')}}">Explore</a></li>
-          @if (auth()->user()->newMessageNotifications()->count()>0)
-            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages <span class="font-seminold">({{auth()->user()->newMessageNotifications()->count()}})</span></a></li>
+          @if (auth()->user()->unreadNotifications()->where('action','message')->count()>0)
+            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages <span class="font-seminold">({{auth()->user()->unreadNotifications()->where('action','message')->count()}})</span></a></li>
           @else
             <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages</a></li>
           @endif
-          @if (auth()->user()->newNotifications()->count()>0)
-            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications <span class="font-semibold">({{auth()->user()->newNotifications()->count()}})</span></a></li>
+          @if (auth()->user()->unreadNotifications()->where('action','!=','message')->count()>0)
+            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications <span class="font-semibold">({{auth()->user()->unreadNotifications()->where('action','!=','message')->count()>0}})</span></a></li>
           @else
             <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications</a></li>
           @endif

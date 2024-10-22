@@ -7,6 +7,7 @@ use App\Models\Message;
 use Livewire\Component;
 use Filament\Forms\Components\Hidden;
 use App\Models\NewMessageNotification;
+use App\Models\Notification;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\MarkdownEditor;
@@ -58,8 +59,10 @@ class MessageShow extends Component implements HasForms
     }
     public function submit()
     {
-        NewMessageNotification::create([
-            "user_to" => $this->receiver_id
+        Notification::create([
+            "user_from" => auth()->user()->id,
+            "user_to" => $this->receiver_id,
+            'action' => 'message'
         ]);
        
         Message::create($this->form->getState());
