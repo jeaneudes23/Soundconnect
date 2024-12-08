@@ -15,7 +15,7 @@
                         <div class="relative flex gap-4">
                             <div class="relative w-16">
                                 @if ($community->headerImage())
-                                    <img class="h-16 w-full  block border-clraccent object-cover border-2" src="{{asset($community->headerImage())}}" alt="profile image" />
+                                    <img class="h-16 w-full  block border-clraccent object-cover border-2" src="{{asset('storage/'.$community->headerImage())}}" alt="profile image" />
                                 @else
                                     <div class="rounded-full h-16 w-full  flex items-center justify-center  uppercase text-white bg-primary">
                                     <span class="text-center text-xl">{{ substr($community->name, 0, 2) }}</span>

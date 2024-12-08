@@ -8,33 +8,18 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
   <body class="antialiased  text-gray-600">
-  <nav class="shadow ">
-    <div class="container mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-2 flex items-center justify-between">
-      <a href="{{route('welcome')}}">
-        <x-application-logo class="w-12 h-12"></x-application-logo>
-      </a>
-      <ul class="flex gap-2 font-semibold">
-        <li>
-          <a class="block px-4 py-2 transition-all hover:text-primary" href="{{ route('welcome') }}">Home</a>
-        </li>
-        <li>
-          <a class="block px-4 py-2 transition-all hover:text-primary" href="{{ route('login')}}">Login</a>
-        </li>
-        <li>
-          <a class="block px-4 py-2 transition-all hover:text-primary" href="{{ route('register')}}">Signup</a>
-        </li>
-      </ul>
+    <div class="container !max-w-md py-6 px-8 bg-gray-100 rounded-xl mt-24">
+      {{ $slot }}
     </div>
-  </nav>
-    {{ $slot }}
     <div class="sm:hidden">@include('layouts.footer')</div>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <x-guest-layout>
-  <div class="mx-auto max-w-md flex-grow basis-3/4 px-4 my-8  md:px-6 lg:basis-1/2 lg:px-8">
+  <div class="">
     <h2 class="text-primary my-4 text-center text-xl font-semibold lg:text-2xl">Signup</h2>
     <form method="POST" action="{{ route('register') }}">
       @csrf

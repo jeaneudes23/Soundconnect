@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .container {
+    @apply max-w-screen-xl px-4 mx-auto
+  }
+
+  .stack {
+    @apply col-start-1 row-start-1
+  }
+}

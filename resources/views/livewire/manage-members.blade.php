@@ -4,7 +4,7 @@
         <div>
             <div class="relative h-56">
                 @if ($community->coverImage())
-                    <img class="h-full w-full object-cover" src="{{asset($community->coverImage())}}" alt="profile image" />
+                    <img class="h-full w-full object-cover" src="{{asset('storage/'.$community->coverImage())}}" alt="profile image" />
                 @else
                 <div class="absolute inset-0 bg-gray-100">
                   </div>
@@ -14,7 +14,7 @@
             <div class="flex items-start py-2 gap-2 px-2">
                 <div class="relative w-32">
                 @if ($community->headerImage())
-                    <img class="absolute h-32 w-full -top-16 block border-clraccent object-cover border-2" src="{{asset($community->headerImage())}}" alt="profile image" />
+                    <img class="absolute h-32 w-full -top-16 block border-clraccent object-cover border-2" src="{{asset('storage/'.$community->headerImage())}}" alt="profile image" />
                 @else
                     <div class="rounded-full absolute h-32 w-full -top-16 flex items-center justify-center  uppercase text-white bg-primary">
                     <span class="text-center text-xl">{{ substr($community->name, 0, 2) }}</span>
@@ -90,7 +90,7 @@
         <div class="py-4">
           <div class="mx-auto relative w-16">
             @if ($community->headerImage())
-                <img class="h-16 w-full  block border-clraccent object-cover border-2" src="{{asset($community->headerImage())}}" alt="profile image" />
+                <img class="h-16 w-full  block border-clraccent object-cover border-2" src="{{asset('storage/'.$community->headerImage())}}" alt="profile image" />
             @else
                 <div class="rounded-full h-16 w-full  flex items-center justify-center  uppercase text-white bg-primary">
                 <span class="text-center text-xl">{{ substr($community->name, 0, 2) }}</span>

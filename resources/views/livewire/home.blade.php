@@ -70,9 +70,8 @@
       
     </x-split-screen-left>
     <x-split-screen-right>
-      <div class="py-4">
-        <x-application-logo class="mx-auto h-16 w-16"></x-application-logo>
-        <div class="text-primary mt-2 text-center text-xl font-semibold">SoundConnect</div>
+      <div class="py-4 text-center">
+        <x-application-logo />
       </div>
     </x-split-screen-right>
   </x-split-screen>
