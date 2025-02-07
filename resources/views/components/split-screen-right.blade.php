@@ -10,5 +10,4 @@
         <a href="{{route('post.create')}}" class="rounded-full border-2 border-primary bg-primary px-4 py-2 font-semibold text-white">Create Post</a>
         @endif
     </div>
-    <div class="bg-gray-100 px-2 py-2 text-center text-sm">Copyright @Jean Eudes 2023</div>
 </div>

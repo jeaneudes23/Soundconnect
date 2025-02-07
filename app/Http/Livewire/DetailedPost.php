@@ -5,12 +5,10 @@ namespace App\Http\Livewire;
 use App\Models\Post;
 use App\Models\Comment;
 use Livewire\Component;
-use App\Models\NewNotification;
-use App\Models\OldNotification;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 
 class DetailedPost extends Component implements HasForms
@@ -43,17 +41,13 @@ class DetailedPost extends Component implements HasForms
         ]);
         if (auth()->user()->id != $this->post->user->id)
         {
-            NewNotification::create([
-                'user_from' => auth()->user()->id,
-                'user_to' =>$this->post->user->id,
-                'action' => 'comment',
-                'post_id' => $this->post->id
-            ]);
-            OldNotification::create([
-                'user_from' => auth()->user()->id,
-                'user_to' =>$this->post->user->id,
-                'action' => 'comment',
-                'post_id' => $this->post->id
+
+
+            Notification::create([
+              'user_from' => auth()->user()->id,
+              'user_to' => $this->post->user->id,
+              'action' => 'comment',
+              'post_id' => $this->post->id,
             ]);
         }
         

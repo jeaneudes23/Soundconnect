@@ -32,11 +32,11 @@ class Community extends Model
     }
     public function headerImage()
     {
-        return $this->header_image ? $this->header_image : '';
+        return $this->header_image ? 'storage/'.$this->header_image : '';
     }
     public function coverImage()
     {
-        return $this->cover_image ?  $this->cover_image : '';
+        return $this->cover_image ?  'storage/'.$this->cover_image : '';
     }
     public function members()
     {

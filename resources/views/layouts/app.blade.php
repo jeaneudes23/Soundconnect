@@ -24,7 +24,6 @@
   @livewireStyles
 
   @stack('scripts')
-  {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 
@@ -35,8 +34,8 @@
   <x-navigation />
   {{ $slot }}
 
-  <footer class="p-12">
-
+  <footer class="mt-12">  
+    <div class="bg-gray-100 px-2 py-2 text-center text-sm">Copyright @Christian 2024</div>
   </footer>
   @livewire('notifications')
   <script async type="text/javascript" src="{{ asset('storage/js/player.js') }}"></script>

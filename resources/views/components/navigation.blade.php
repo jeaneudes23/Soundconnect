@@ -1,4 +1,4 @@
-<nav class="hidden md:block sticky top-0 z-10 bg-white text-gray-600 shadow">
+<nav class="hidden lg:block sticky top-0 z-10 bg-white text-gray-600 shadow">
     <div class="container mx-auto flex items-center justify-between py-2">
       <div class="flex items-center gap-4">
         <a href="{{route('home')}}">
@@ -28,9 +28,9 @@
       </div>
 
         <ul class="flex items-center justify-between gap-2">
-          <li><a class="hover:text-primary px-4 py-2 transition-all inline-flex gap-1 items-center" href="{{route('explore')}}"><x-heroicon-o-search class="w-5 h-5" /> Explore</a></li>
+          <li><a class="hover:text-primary px-4 py-2 transition-all inline-flex gap-1 items-center" href="{{route('explore')}}">Explore</a></li>
           @if (auth()->user()->unreadNotifications()->where('action','message')->count()>0)
-            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}"><x-heroicon-o-search class="w-5 h-5" /> Messages <span class="font-seminold">({{auth()->user()->unreadNotifications()->where('action','message')->count()}})</span></a></li>
+            <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages <span class="font-seminold">({{auth()->user()->unreadNotifications()->where('action','message')->count()}})</span></a></li>
           @else
             <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages</a></li>
           @endif
@@ -39,7 +39,6 @@
           @else
             <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('notifications')}}">Notifications</a></li>
           @endif
-          <li><a class="hover:text-primary block px-4 py-2 transition-all" href="{{route('post.create')}}">Create Post</a></li>
           <li class="group">
             <button class="inline-flex items-center rounded-lg border px-4 py-2">
               {{auth()->user()->username}}
@@ -99,7 +98,7 @@
       </div>
 
         <ul x-show="open" class="pt-4 divide-y flex flex-col">
-          <li><a class="border-t hover:text-primary block px-4 py-2 transition-all" href="{{route('explore')}}"><x-heroicon-o-search class="size-5"/> Explore</a></li>
+          <li><a class="border-t hover:text-primary block px-4 py-2 transition-all" href="{{route('explore')}}">Explore</a></li>
           @if (auth()->user()->unreadNotifications()->where('action','message')->count()>0)
             <li><a class="hover:text-primary text-red-600 block px-4 py-2 transition-all" href="{{route('messages.index')}}">Messages <span class="font-seminold">({{auth()->user()->unreadNotifications()->where('action','message')->count()}})</span></a></li>
           @else

@@ -72,7 +72,7 @@
         <div class="relative mx-auto w-16">
           @if ($community->headerImage())
             <img class="block h-16 w-full border-2 border-clraccent object-cover"
-                 src="{{ asset('storage/'.$community->headerImage()) }}" alt="profile image" />
+                 src="{{ asset($community->headerImage()) }}" alt="profile image" />
           @else
             <div class="flex h-16 w-full items-center justify-center rounded-full bg-primary uppercase text-white">
               <span class="text-center text-xl">{{ substr($community->name, 0, 2) }}</span>
