@@ -1,53 +1,51 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <meta name="application-name" content="{{ config('app.name') }}" />
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ config('app.name', 'Laravel') }}
+    @if (isset($title))
+      - {{ $title }}
+    @endif
+  </title>
 
-  <title>{{ config('app.name') . ' | ' . $title }}</title>
 
-  <style>
-    [x-cloak] {
-      display: none !important;
-    }
-  </style>
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+  <!-- Scripts -->
+  @filamentStyles
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  @livewireStyles
-
-  @stack('scripts')
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 
-<body class="overflow-x-hidden text-gray-600 antialiased">
-  <x-auth-session-status class="mb-4" :status="session('status')" />
-  <x-message-status class="mb-4" :message="session('message')" />
-
-  <x-navigation />
-  {{ $slot }}
-
-  <footer class="mt-12">  
-    <div class="bg-gray-100 px-2 py-2 text-center text-sm">Copyright @Christian 2024</div>
-  </footer>
+<body class="font-base antialiased">
+  <a href="#top" id="page-top"></a>
+  <livewire:layout.navigation />
+  <main class="min-h-screen">
+    {{ $slot }}
+  </main>
+  <x-footer />
   @livewire('notifications')
-  <script async type="text/javascript" src="{{ asset('storage/js/player.js') }}"></script>
-  <script>
-    if (document.querySelector('#message')) {
-      document.querySelector('#message').classList.remove('-translate-y-full')
-      setTimeout(() => {
-        document.querySelector('#message').classList.add('-translate-y-full')
-      }, 3000);
-    }
-  </script>
-  @livewireScripts
+  @filamentScripts
+ 
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6750a9c84304e3196aec7f6b/1ie9heetg';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 
 </html>
